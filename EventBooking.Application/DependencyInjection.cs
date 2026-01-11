@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EventBooking.Application.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace EventBooking.Application
 {
-    internal class DependencyInjection
+    public static class DependencyInjection
     {
+        public static IServiceCollection AddApplication(this IServiceCollection services)
+        {
+            services.AddScoped<IEventService, EventService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IBookingService, BookingService>();
+
+            return services;
+        }
     }
 }
